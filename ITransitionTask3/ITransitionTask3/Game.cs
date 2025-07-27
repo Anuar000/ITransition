@@ -15,7 +15,6 @@
         {
             Console.WriteLine("Let's determine who makes the first move.");
 
-            // Step 1: Determine who goes first
             var firstMoveGen = new FairRandomGenerator(2); // 0 or 1
             Console.WriteLine($"I selected a random value in the range 0..1 (HMAC={firstMoveGen.Hmac}).");
             Console.WriteLine("Try to guess my selection.");
@@ -64,15 +63,12 @@
 
             Console.WriteLine($"You choose the {userDice} dice.");
 
-            // Computer's roll
             Console.WriteLine("It's time for my roll.");
             int computerRoll = PerformRoll(computerDice, "My roll result is {0}.");
 
-            // User's roll
             Console.WriteLine("It's time for your roll.");
             int userRoll = PerformRoll(userDice, "Your roll result is {0}.");
 
-            // Determine winner
             Console.WriteLine($"You rolled {userRoll}, I rolled {computerRoll}.");
             if (userRoll > computerRoll)
             {
@@ -124,7 +120,6 @@
                 ? _diceList
                 : _diceList.Where(d => d != excludedDice).ToList();
 
-            // Simple AI - choose the dice with the highest average win probability
             var bestDice = availableDice
                 .OrderByDescending(d => _probabilities
                     .Where(kvp => kvp.Key.Item1 == d && availableDice.Contains(kvp.Key.Item2))

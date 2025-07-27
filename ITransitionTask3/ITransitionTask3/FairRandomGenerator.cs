@@ -18,7 +18,6 @@ namespace NonTransitiveDice
 
             _hmac = new HMACSHA256(_key);
 
-            // Generate computer's choice
             _computerChoice = GetSecureRandomInt(0, maxValue);
         }
 

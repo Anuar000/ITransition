@@ -36,7 +36,6 @@ namespace NonTransitiveDice
         {
             var diceSet = probabilities.Keys.Select(k => k.Item1).Distinct().ToList();
 
-            // Заголовки таблицы
             var headers = new List<string> { "Dice \\ vs >" };
             headers.AddRange(diceSet.Select(d => d.ToString()));
 
@@ -54,7 +53,6 @@ namespace NonTransitiveDice
                         row.Add(probabilities[(rowDice, colDice)].ToString("P0"));
                 }
 
-                // Убедись, что row.Count == headers.Count
                 if (row.Count != headers.Count)
                 {
                     throw new InvalidOperationException(
